@@ -14,22 +14,40 @@ class ArregloOrdenado:
         print("Arreglo reiniciado.")
 
     def busquedaLineal(self, valor: str):
+        encontrado = False
+        for i in range(self.N + 1):
+            if self.arregloOrdenado[i] == valor:
+                print(f"Valor '{valor}' encontrado en {i}.")
+                print(f"Intentos: {i+1}")
+                encontrado = True
+                break
+
+        if not encontrado:
+            print(f"No se ha encontrado el valor '{valor}' en {i} intentos.")
+
+    def busquedaLinealEliminar(self, valor: str):
         for i in range(self.N + 1):
             if self.arregloOrdenado[i] == valor:
                 return i
         return -1
 
     def busquedaBinaria(self, valor: str):
-        li, ls = 0, self.N
+        li, ls, intentos, encontrado = 0, self.N, 1, False
         while li <= ls:
             medio = (li + ls) // 2
             if self.arregloOrdenado[medio] == valor:
-                return medio
+                print(f"Valor '{valor}' encontrado en {medio}.")
+                print(f"Intentos: {intentos}")
+                encontrado = True
+                break
             elif self.arregloOrdenado[medio] < valor:
                 li = medio + 1
             else:
                 ls = medio - 1
-        return -1
+            intentos += 1
+
+        if not encontrado:
+            print(f"No se ha encontrado el valor '{valor}' en {intentos} intentos.")
 
     def insertar(self, valor: str):
         if self.N >= self.MAX - 1:
@@ -48,11 +66,10 @@ class ArregloOrdenado:
         print(f"Valor '{valor}' insertado correctamente.")
 
     def eliminar(self, valor: str):
-        index = self.busquedaLineal(valor)
+        index = self.busquedaLinealEliminar(valor)
         if index != -1:
             for i in range(index, self.N):
                 self.arregloOrdenado[i] = self.arregloOrdenado[i + 1]
-            self.arregloOrdenado[self.N] = ''
             self.N -= 1
             print(f"Valor '{valor}' eliminado correctamente.")
         else:
