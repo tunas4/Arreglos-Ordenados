@@ -27,18 +27,31 @@ class ArregloOrdenado:
         return -1
 
     def busquedaBinaria(self, valor: str):
-        li, ls, intentos = 0, self.N, 1
-        while li <= ls:
-            medio = (li + ls) // 2
-            if self.arregloOrdenado[medio] == valor:
-                return (f"Valor '{valor}' encontrado en {medio}. \nIntentos: {intentos}")
-            elif self.arregloOrdenado[medio] < valor:
-                li = medio + 1
-            else:
-                ls = medio - 1
-            intentos += 1
+        li, ls= 0, self.N
+        intentos = 0
 
-        print(f"No se ha encontrado el valor '{valor}' en {intentos} intentos.")
+        # Si el valor esta en limite inferior o superior del arreglo se retorna.
+        if self.arregloOrdenado[li] == valor:
+            return (f"Valor '{valor}' encontrado en {li}. \nIntentos: {intentos}")
+            
+        elif self.arregloOrdenado[ls] == valor:
+            return (f"Valor '{valor}' encontrado en {ls}. \nIntentos: {intentos}")
+    
+        # Busqueda binaria
+        while li <= ls:
+            P = (li + ls) // 2 # Calculamos el punto medio.
+
+            if self.arregloOrdenado[P] == valor:
+                return (f"Valor '{valor}' encontrado en {P}. \nIntentos: {intentos}")
+            
+            elif (self.arregloOrdenado[P].lower() < valor.lower() or (self.arregloOrdenado[P].lower() == valor.lower() and self.arregloOrdenado[P] < valor)):
+                    li = P + 1
+            else:
+                    ls = P - 1
+
+            intentos += 1  # Incrementamos el contador de intentos.
+
+        return(f"No se ha encontrado el valor '{valor}' en {intentos} intentos.")
 
     def insertar(self, valor: str):
         if self.N >= self.MAX - 1:

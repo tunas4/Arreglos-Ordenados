@@ -78,7 +78,7 @@ class Views:
     def ventana_buscar_arreglo(self):
         ventana_buscar = tk.Toplevel()
         ventana_buscar.title("Buscar Arreglo")
-        ventana_buscar.geometry("200x200")
+        ventana_buscar.geometry("400x400")
 
         button3 = tk.Button(ventana_buscar, text="Búsqueda Lineal", command=self.ventana_busqueda_lineal)
         button3.pack(pady=10)
@@ -171,7 +171,16 @@ class Views:
     def ventana_creditos(self):
         ventana_creditos = tk.Toplevel()
         ventana_creditos.title("Créditos")
-        ventana_creditos.geometry("200x200")
+        ventana_creditos.geometry("300x300")
 
-        label1 = tk.Label(ventana_creditos, text="Creado por: Tu Nombre Aquí")
+        label1 = tk.Label(ventana_creditos, text="Asignatura: Estructuras de Datos Aplicadas")
+        label2 = tk.Label(ventana_creditos, text="Creado por:")
+        label3 = tk.Label(ventana_creditos, text="Jonathan Ivan Castro Saenz | 2370035")
+        label4 = tk.Label(ventana_creditos, text="Noé Abel Vargas López | 23170106")
+
         label1.pack(pady=20)
+        label2.pack(pady=20)
+        label3.pack(pady=20)
+        label4.pack(pady=20)
+       
+       
