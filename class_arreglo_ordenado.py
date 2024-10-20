@@ -79,9 +79,9 @@ class ArregloOrdenado:
             return ("El valor no se encontró.")
 
     def modificar(self, valor: str, valorModificado: str):
-        index = self.busquedaLinealCambio(valor)
+        index = self.eliminar(valor)
         if index != -1:
-            self.arregloOrdenado[index] = valorModificado
+            self.insertar(valorModificado)
             return (f"Valor '{valor}' modificado correctamente.")
         else:
             return ("El valor no se encontró.")
