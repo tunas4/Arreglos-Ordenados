@@ -126,7 +126,10 @@ class Views:
             letra = entry.get()
             if len(letra) == 1 and letra.isalpha():
                 res = ArregloOrdenado.eliminar(letra)
-                label_resultado.config(text=res)
+                if res == -1: 
+                    label_resultado.config(text="El valor no se encuentra en el arreglo.")
+                else:
+                    label_resultado.config(text=res)
             else:
                 label_resultado.config(text="Debes enviar solo una letra.")
 

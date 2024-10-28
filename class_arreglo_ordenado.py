@@ -17,6 +17,8 @@ class ArregloOrdenado:
         for i in range(self.N + 1):
             if self.arregloOrdenado[i] == valor:
                 return (f"Valor '{valor}' encontrado en {i}. \nIntentos: {i+1}")
+            if self.arregloOrdenado[i] > valor:
+                return (f"Valor '{valor}' no encontrado. \nIntentos: {i+1}")
         
         return (f"No se encontro el valor '{valor}' \nIntentos: {i+1}")
 
@@ -75,8 +77,7 @@ class ArregloOrdenado:
                 self.arregloOrdenado[i] = self.arregloOrdenado[i + 1]
             self.N -= 1
             return (f"Valor '{valor}' eliminado correctamente.")
-        else:
-            return ("El valor no se encontró.")
+        return index
 
     def modificar(self, valor: str, valorModificado: str):
         index = self.eliminar(valor)
