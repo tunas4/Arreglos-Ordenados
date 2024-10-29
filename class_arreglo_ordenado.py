@@ -34,13 +34,15 @@ class ArregloOrdenado:
 
         # Si el valor esta en limite inferior o superior del arreglo se retorna.
         if self.arregloOrdenado[li] == valor:
+            intentos += 1
             return (f"Valor '{valor}' encontrado en {li}. \nIntentos: {intentos}")
-            
         elif self.arregloOrdenado[ls] == valor:
+            intentos += 1
             return (f"Valor '{valor}' encontrado en {ls}. \nIntentos: {intentos}")
     
         # Busqueda binaria
         while li <= ls:
+            intentos += 1  # Incrementamos el contador de intentos.
             P = (li + ls) // 2 # Calculamos el punto medio.
 
             if self.arregloOrdenado[P] == valor:
@@ -51,7 +53,7 @@ class ArregloOrdenado:
             else:
                     ls = P - 1
 
-            intentos += 1  # Incrementamos el contador de intentos.
+           
 
         return(f"No se ha encontrado el valor '{valor}' en {intentos} intentos.")
 
